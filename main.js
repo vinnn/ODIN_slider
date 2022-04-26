@@ -116,11 +116,15 @@ function getCurrentImgI() {
 
 
 function displayImg(imgs, ii) {
+        
     const div_picture = document.getElementById("picture");
 
-    while (div_picture.lastChild) {
+    while (div_picture.lastChild) {      
         div_picture.removeChild(div_picture.lastChild);
     }
+
+    // imgs[ii].classList.add("in");
+    // imgs[ii].classList.toggle('in');
 
     div_picture.appendChild(imgs[ii]);
 }

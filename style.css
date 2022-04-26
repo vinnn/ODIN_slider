@@ -33,7 +33,23 @@
 }
 .img {
     max-height: 90vh;
+
+    animation: fadein 1s ease-in-out 0s 1 normal forwards;
 }
+
+
+
+
+@keyframes fadein {
+    0% {
+        opacity: 0;;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
 
 
 /* LEFT AND RIGHT BUTTONS */
