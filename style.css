@@ -10,11 +10,12 @@
 
     display: grid;
 
-    grid-template-rows: 9fr 1fr;
+    grid-template-rows: 9fr 1fr 1fr;
     grid-template-columns: 1fr 8fr 1fr;
 
     grid-template-areas: "tleft tpicture tright"
-                         "bott bott bott";
+                         "bdot bdot bdot"
+                         "bplay bplay bplay";
 
 }
 
@@ -72,17 +73,31 @@
 /* BOTTOM BUTTONS */
 
 
-#bott {
-    grid-area: bott;
+#bott-dots {
+    grid-area: bdot;
     display: flex;
     justify-content: center;
     gap: 1rem;
 }
-.bott-btn {
+.bott-dot-btn {
     height: 1rem;
     border-radius: 100%;
 }
-.bott-btn:hover {
+.bott-dot-btn:hover {
     background-color: green;
 }
 
+
+
+/* BOTTOM PLAY BTN */
+
+#bott-play {
+    grid-area: bplay;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#btn-play {
+    height: 2rem;
+    width: 8rem;
+}

@@ -16,25 +16,19 @@ const pictures = [
 ];
 
 const div_picture = document.getElementById("picture");
-const div_bott = document.getElementById("bott");
-
+const div_bott_dots = document.getElementById("bott-dots");
+let intervalID = 0;
 
 const imgs = createImgs(pictures);
 // initial image displayed:
 displayImg(imgs, 0);
 // display bottom buttons:
-createBottBtns(pictures);
+createBottDotBtns(pictures);
 // Event listeners:
 listenLeftBtn(imgs);
 listenRightBtn(imgs);
-listenBottBtns(imgs);
-
-
-
-
-
-
-
+listenBottDotBtns(imgs);
+listenPlayBtn(imgs);
 
 
 
@@ -60,15 +54,15 @@ function createImgs(pictures) {
 
 
 
-function createBottBtns(pictures) {
+function createBottDotBtns(pictures) {
     const btns = [];
 
     for (let ii=0; ii<pictures.length; ii++) {
         btns[ii] = document.createElement("button");
-        btns[ii].classList.add("bott-btn");
+        btns[ii].classList.add("bott-dot-btn");
         btns[ii].setAttribute("data", ii);
         btns[ii].id = "btn" + ii;
-        div_bott.appendChild(btns[ii]);
+        div_bott_dots.appendChild(btns[ii]);
     }
 }
 
@@ -94,8 +88,8 @@ function listenRightBtn(imgs) {
     }
 }
 
-function listenBottBtns(imgs) {
-    const btns = document.querySelectorAll(".bott-btn");
+function listenBottDotBtns(imgs) {
+    const btns = document.querySelectorAll(".bott-dot-btn");
     btns.forEach( btn => 
         btn.onclick = (e) => {
             // e.preventDefault();
@@ -105,7 +99,35 @@ function listenBottBtns(imgs) {
     )
 }
 
+function listenPlayBtn() {
 
+    const btnPlay = document.getElementById("btn-play");
+
+    btnPlay.onclick = (e) => {
+
+        if (btnPlay.classList[0] == "paused") {
+            console.log("now play");
+            intervalID = setInterval(playNext, 3000);
+            btnPlay.textContent = "PAUSE";
+        } else {
+            console.log("now pause");
+            clearInterval(intervalID);
+            btnPlay.textContent = "PLAY";
+        }
+
+        btnPlay.classList.toggle('paused');
+        btnPlay.classList.toggle('playing');
+        console.log(btnPlay.classList[0]);
+
+    }
+}
+
+function playNext() {
+    const nbImgs = imgs.length;
+    let currI = getCurrentImgI();
+    let nextI = (currI == (nbImgs - 1))? 0 : currI + 1;
+    displayImg(imgs, nextI);
+}
 
 
 
