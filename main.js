@@ -31,28 +31,23 @@ listenBottDotBtns(imgs);
 listenPlayBtn(imgs);
 
 
-
-
 // #############################################################
 // #############################################################
 // FUNCTIONS
 // #############################################################
 // #############################################################
 
-
 function createImgs(pictures) {
     const imgs = [];
     for (let ii=0; ii<pictures.length; ii++) {
+        console.log(pictures[ii]);
         imgs[ii] = document.createElement("img");
-        imgs[ii].src = "/img/" + pictures[ii];
+        imgs[ii].src = "img/" + pictures[ii];
         imgs[ii].classList.add("img");
         imgs[ii].id = "img" + ii;    
     }
     return imgs;
 }
-
-
-
 
 function createBottDotBtns(pictures) {
     const btns = [];
@@ -131,11 +126,11 @@ function playNext() {
 
 
 
+
 function getCurrentImgI() {
     let pid = document.getElementById("picture").firstChild.id;
     return Number(pid.slice(3));
 }
-
 
 function displayImg(imgs, ii) {
         
@@ -147,7 +142,6 @@ function displayImg(imgs, ii) {
 
     // imgs[ii].classList.add("in");
     // imgs[ii].classList.toggle('in');
-
     div_picture.appendChild(imgs[ii]);
 }
 
